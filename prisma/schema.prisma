@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String @id @default(uuid())
+  email              String @unique
+  encrypted_password String
+
+  firebird_path_database String
+  database_ip            String
+  firebird_password      String? @default("masterkey")
+  firebird_user          String? @default("SYSDBA")
+
+  expire_date_token      DateTime?
+  recover_password_token String?   @unique
+  recovered_password     String?
+
+  name String @default("")
+  cnpj String @default("")
+
+  use_backup       Boolean   @default(false)
+  aws_folder       String?
+  last_backup_date DateTime?
+}
+
+model InternalUsers {
+  id                 String @id @default(uuid())
+  email              String @unique
+  encrypted_password String
+}

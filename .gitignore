@@ -1,0 +1,12 @@
+# Arquivos gerados localmente
+node_modules/
+dbs/
+temporaryDatabases/
+dist/
+server.exe
+prisma/dev.db
+prisma/migrations
+
+# Arquivos específicos do ambiente
+.env
+.vercel
