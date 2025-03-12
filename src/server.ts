@@ -14,22 +14,22 @@ app.register(jwt, {
 })
 
 // Para hospedagem aws
-// const start = async () => {
-//   try {
-//     // const PORT = process.env.port || 8080;
-//     await app.listen({ port: 8080, host: '0.0.0.0' }, () =>
-//       console.log('SERVER LISTENING AT PORT : ' + '8080'),
-//     )
-//   } catch (err) {
-//     app.log.error(err)
-//     process.exit(1)
-//   }
-// }
-// start()
+const start = async () => {
+  try {
+    // const PORT = process.env.port || 8080;
+    await app.listen({ port: 8080, host: '0.0.0.0' }, () =>
+      console.log('SERVER LISTENING AT PORT : ' + '8080'),
+    )
+  } catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
+start()
 
 // Para uso em dev
-app.listen({ port: 8081 }, () => {
-  console.log('SERVER LISTENING AT PORT 8081')
-})
+// app.listen({ port: 8081 }, () => {
+//   console.log('SERVER LISTENING AT PORT 8081')
+// })
 
 export { app }
