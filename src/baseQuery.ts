@@ -6,10 +6,12 @@ const connectWithRetry = async (dbOptions: DbOptions): Promise<Database> => {
     const tryConnect = async () => {
       Firebird.attach(dbOptions, (error, db) => {
         if (error) {
-          console.log(error)
-          // if (error.code === 'ETIMEDOUT') {
-          //   reject(error)
-          // }
+          console.log('Erro de conexão:', error.code)
+
+          if (error.code === 'ETIMEDOUT') {
+            return reject(error)
+          }
+
           setTimeout(tryConnect, 1) // Tenta novamente após 1 milisegundos
         } else {
           resolve(db)
@@ -53,6 +55,6 @@ export const queryDatabase = async (sql: string, dbOptions: DbOptions) => {
       return result
     }
   } catch (error) {
-    console.error('Erro na consulta:', error)
+    console.error('Erro na consulta:', error + sql)
   }
 }

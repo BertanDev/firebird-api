@@ -17,7 +17,7 @@ export const TotalReceivable = async (app: FastifyInstance) => {
 
       try {
         const sql = `
-			select sum(sald) as TOTAL from titur and empr = ${dbUserptions.empr}
+			select sum(sald) as TOTAL from titur where empr = ${dbUserptions.empr}
 			`
         const result = await queryDatabase(sql, dbUserptions)
         return reply.status(200).send(result)

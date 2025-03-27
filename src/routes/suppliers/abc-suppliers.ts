@@ -23,8 +23,6 @@ export const ABCSuppliers = async (app: FastifyInstance) => {
 
       const formatInitialDate = dayjs(initialDate).format('DD[.]MM[.]YYYY')
       const formatFinishDate = dayjs(finishDate).format('DD[.]MM[.]YYYY')
-      console.log(formatInitialDate)
-      console.log(formatFinishDate)
 
       try {
         const sql = `

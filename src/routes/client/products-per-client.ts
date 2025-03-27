@@ -25,8 +25,6 @@ export const ProductsPerClient = async (app: FastifyInstance) => {
       const formatInitialDate = dayjs(initialDate).format('DD[.]MM[.]YYYY')
       const formatFinishDate = dayjs(finishDate).format('DD[.]MM[.]YYYY')
 
-      console.log(formatInitialDate, formatFinishDate, client)
-
       try {
         const sql = `select p.codi, p.descr, ite.qtd, ite.prec_venda1, pv.data from itens ite
 					left join pedi_vend pv on ite.nume = pv.codi

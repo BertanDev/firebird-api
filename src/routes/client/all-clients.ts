@@ -26,8 +26,6 @@ export const AllClients = async (app: FastifyInstance) => {
           result = [result]
         }
 
-        console.log(result)
-
         return reply.status(200).send(result)
       } catch (error) {
         console.error('Error:', error)

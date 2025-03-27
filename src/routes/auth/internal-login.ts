@@ -36,7 +36,7 @@ export const InternalLogin = async (app: FastifyInstance) => {
       const token = jwt.sign(
         { user_id: user.id },
         process.env.JWT_SECRET as string,
-        { expiresIn: '24h' },
+        { expiresIn: '365d' },
       )
 
       return reply.status(200).send({ token })
